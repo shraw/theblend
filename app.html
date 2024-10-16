@@ -1,74 +1,61 @@
-<!DOCTYPE html>
-<html lang="de">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Bestelle deine individuelle Milchmischung bei The Blend">
-    <title>The Blend - Bestellen</title>
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+Knujsl5/2hb8psN8fAVROApHVY06flqU6OOVRHXVuOmQ9g" crossorigin="anonymous">
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-    <header class="bg-primary text-white text-center py-3">
-        <h1>The Blend - Bestellen</h1>
-        <button id="lang-toggle" class="btn btn-light" onclick="toggleLanguage()">Switch to English</button>
-        <nav class="nav justify-content-center">
-            <a href="index.html" class="nav-link text-white">Zurück zur Microsite</a>
-            <a href="blog.html" class="nav-link text-white">Blog</a>
-        </nav>
-    </header>
 
-    <main class="container mt-5">
-        <section class="text-center">
-            <h2>Wähle deine Milchmischung</h2>
-            <div class="mb-3">
-                <label for="coffee-selection" class="form-label">Getränk:</label>
-                <select id="coffee-selection" class="form-select mb-3">
-                    <option value="Cappuccino">Cappuccino</option>
-                    <option value="Cortado">Cortado</option>
-                    <option value="Latte Macchiato">Latte Macchiato</option>
-                    <option value="Flat White">Flat White</option>
-                    <option value="Milk-infused Americano">Milk-infused Americano</option>
-                    <option value="Chai Latte">Chai Latte</option>
-                    <option value="Matcha Latte">Matcha Latte</option>
-                </select>
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>The Blend - Bestellen</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+        <style>
+            body {
+                font-family: 'Montserrat', sans-serif;
+            }
+            h1, h2 {
+                font-weight: 700;
+            }
+            .btn-primary {
+                background-color: #ff6347; /* kräftiges Tomatenrot */
+            }
+            .btn-primary:hover {
+                background-color: #ff4500;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container mt-5">
+            <h2 class="text-center">Stelle deine perfekte Milchmischung zusammen</h2>
+            <div class="card mt-4">
+                <div class="card-body">
+                    <label for="coffee-selection" class="form-label">Getränk:</label>
+                    <select id="coffee-selection" class="form-select mb-3">
+                        <option value="Cappuccino">Cappuccino</option>
+                        <option value="Cortado">Cortado</option>
+                        <option value="Latte Macchiato">Latte Macchiato</option>
+                        <option value="Flat White">Flat White</option>
+                        <option value="Milk-infused Americano">Milk-infused Americano</option>
+                        <option value="Chai Latte">Chai Latte</option>
+                        <option value="Matcha Latte">Matcha Latte</option>
+                    </select>
 
-                <label for="milk-slider" class="form-label">Kuhmilch zu pflanzlicher Milch:</label>
-                <input type="range" class="form-range" id="milk-slider" min="0" max="100" value="50">
-                <span id="slider-value">50%</span>
+                    <label for="milk-slider" class="form-label">Kuhmilch zu pflanzlicher Milch:</label>
+                    <input type="range" class="form-range" id="milk-slider" min="0" max="100" value="50">
+                    <span id="slider-value" class="text-center d-block">50%</span>
+
+                    <button class="btn btn-primary mt-4 w-100" onclick="submitOrder()">Jetzt bestellen</button>
+                </div>
             </div>
-            <button class="btn btn-primary" onclick="order()">Bestellen</button>
-        </section>
-    </main>
+        </div>
 
-    <footer class="bg-light text-center py-3 mt-5">
-        <p>&copy; 2024 The Blend</p>
-    </footer>
-
-    <script>
-        let isGerman = true;
-
-        function toggleLanguage() {
-            isGerman = !isGerman;
-            document.querySelectorAll('[data-text-de]').forEach(elem => {
-                elem.textContent = isGerman ? elem.getAttribute('data-text-de') : elem.getAttribute('data-text-en');
+        <script>
+            document.getElementById('milk-slider').addEventListener('input', function() {
+                document.getElementById('slider-value').textContent = this.value + '%';
             });
-            document.getElementById('lang-toggle').textContent = isGerman ? 'Switch to English' : 'Auf Deutsch umschalten';
-        }
 
-        function order() {
-            const drink = document.getElementById('coffee-selection').value;
-            const milkRatio = document.getElementById('milk-slider').value;
-            const pickupNumber = Math.floor(Math.random() * 100) + 1;
-            alert('Du hast ' + drink + ' mit ' + milkRatio + '% Kuhmilch bestellt! Deine Abholnummer ist ' + pickupNumber);
-        }
-
-        document.getElementById('milk-slider').addEventListener('input', function() {
-            document.getElementById('slider-value').textContent = this.value + '%';
-        });
-    </script>
-    <!-- Bootstrap JS and dependencies -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-7AmdBWVuC12Mkp5oTnTOFVVxiNBsE8Eb0B5L3JxPdsIc23H8ix9fGwhw6sA6s4iC" crossorigin="anonymous"></script>
-</body>
-</html>
+            function submitOrder() {
+                const orderNumber = Math.floor(Math.random() * 100) + 1;
+                alert('Danke für deine Bestellung! Deine Abholnummer ist: ' + orderNumber);
+            }
+        </script>
+    </body>
+    </html>
+    

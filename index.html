@@ -1,53 +1,74 @@
-<!DOCTYPE html>
-<html lang="de">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Willkommen bei The Blend - das Café für Flexitarier">
-    <title>The Blend</title>
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+Knujsl5/2hb8psN8fAVROApHVY06flqU6OOVRHXVuOmQ9g" crossorigin="anonymous">
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-    <header class="bg-primary text-white text-center py-3">
-        <h1>The Blend</h1>
-        <button id="lang-toggle" class="btn btn-light" onclick="toggleLanguage()">Switch to English</button>
-        <nav class="nav justify-content-center">
-            <a href="app.html" class="nav-link text-white">Bestelle jetzt</a>
-            <a href="blog.html" class="nav-link text-white">Blog</a>
-        </nav>
-    </header>
 
-    <main class="container mt-5">
-        <section class="hero text-center" style="background-image: url('cafe_interior.jpg'); background-size: cover; color: white; padding: 100px 0;">
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>The Blend</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+        <style>
+            body {
+                font-family: 'Montserrat', sans-serif;
+            }
+            h1, h2 {
+                font-weight: 700;
+                letter-spacing: 1px;
+            }
+            .bg-primary {
+                background-color: #4CAF50; /* modernes Grün */
+            }
+            .btn-primary {
+                background-color: #ff6347; /* kräftiges Tomatenrot */
+            }
+            .btn-primary:hover {
+                background-color: #ff4500;
+            }
+            .hero {
+                background-image: url('cafe_interior.jpg');
+                background-size: cover;
+                position: relative;
+                padding: 100px 0;
+                color: white;
+                text-align: center;
+            }
+            .hero .overlay {
+                background-color: rgba(0, 0, 0, 0.5);
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+            }
+            .hero h2 {
+                position: relative;
+                z-index: 2;
+            }
+            .hero .btn {
+                position: relative;
+                z-index: 2;
+            }
+        </style>
+    </head>
+    <body>
+        <header class="hero">
+            <div class="overlay"></div>
             <h2 class="display-4">Flexitarier aller Länder, vereinigt Euch!</h2>
             <p class="lead">Entdecke unsere köstlichen Mischungen aus Kuhmilch und pflanzlichen Alternativen, perfekt für jeden Geschmack.</p>
-            <a href="app.html" class="btn btn-primary btn-lg">Jetzt bestellen</a>
-        </section>
+            <a href="app.html" class="btn btn-light btn-lg">Jetzt bestellen</a>
+        </header>
 
-        <section class="mt-5 text-center">
-            <h3>Über The Blend</h3>
-            <p>The Blend ist das erste Café, das sich auf Flexitarier spezialisiert hat. Mit unserem einzigartigen Konzept bieten wir dir die perfekte Balance zwischen Kuhmilch und pflanzlichen Alternativen. Unsere Mischungen sind ausgewogen, köstlich und speziell für alle, die gerne flexibel bleiben. Egal, ob du auf dem Weg zu einer veganen Ernährung bist oder einfach nur neugierig – bei uns findest du deine Mischung!</p>
-        </section>
-    </main>
-
-    <footer class="bg-light text-center py-3 mt-5">
-        <p>&copy; 2024 The Blend</p>
-    </footer>
-
-    <script>
-        let isGerman = true;
-
-        function toggleLanguage() {
-            isGerman = !isGerman;
-            document.querySelectorAll('[data-text-de]').forEach(elem => {
-                elem.textContent = isGerman ? elem.getAttribute('data-text-de') : elem.getAttribute('data-text-en');
-            });
-            document.getElementById('lang-toggle').textContent = isGerman ? 'Switch to English' : 'Auf Deutsch umschalten';
-        }
-    </script>
-    <!-- Bootstrap JS and dependencies -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-7AmdBWVuC12Mkp5oTnTOFVVxiNBsE8Eb0B5L3JxPdsIc23H8ix9fGwhw6sA6s4iC" crossorigin="anonymous"></script>
-</body>
-</html>
+        <div class="container-fluid py-5">
+            <div class="row text-center">
+                <div class="col-md-6">
+                    <h3>Flexibilität für jeden</h3>
+                    <p>Unsere Mischungen passen sich deinem Geschmack an, egal ob du Kuhmilch oder pflanzliche Alternativen bevorzugst.</p>
+                </div>
+                <div class="col-md-6">
+                    <h3>Individuell auf dich zugeschnitten</h3>
+                    <p>Bestimme selbst, wie viel Kuhmilch oder pflanzliche Milch du möchtest – direkt bei deiner Bestellung.</p>
+                </div>
+            </div>
+        </div>
+    </body>
+    </html>
+    
