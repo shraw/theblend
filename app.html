@@ -21,7 +21,19 @@
 
     <main class="container mt-5">
         <section class="text-center">
-            <h2>Wähle deine Milchmischung</h2>
+            <h2>Wähle deine Kaffee-Kreation</h2>
+            <div class="mb-3">
+                <label for="coffee-select" class="form-label">Kaffee oder Latte:</label>
+                <select class="form-select" id="coffee-select">
+                    <option value="Cappuccino">Cappuccino</option>
+                    <option value="Cortado">Cortado</option>
+                    <option value="Latte Macchiato">Latte Macchiato</option>
+                    <option value="Flat White">Flat White</option>
+                    <option value="Milk-infused Americano">Milk-infused Americano</option>
+                    <option value="Chai Latte">Chai Latte</option>
+                    <option value="Matcha Latte">Matcha Latte</option>
+                </select>
+            </div>
             <div class="mb-3">
                 <label for="milk-slider" class="form-label">Kuhmilch zu pflanzlicher Milch:</label>
                 <input type="range" class="form-range" id="milk-slider" min="0" max="100" value="50">
@@ -47,8 +59,10 @@
         }
 
         function order() {
-            const value = document.getElementById('milk-slider').value;
-            alert('Du hast ' + value + '% Kuhmilch und ' + (100 - value) + '% pflanzliche Milch bestellt!');
+            const coffeeType = document.getElementById('coffee-select').value;
+            const milkRatio = document.getElementById('milk-slider').value;
+            const orderNumber = Math.floor(Math.random() * 100) + 1;
+            alert(`Du hast ${coffeeType} mit ${milkRatio}% Kuhmilch und ${100 - milkRatio}% pflanzlicher Milch bestellt! Deine Abholnummer ist: ${orderNumber}.`);
         }
 
         document.getElementById('milk-slider').addEventListener('input', function() {
