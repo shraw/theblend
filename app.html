@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Bestelle deinen Kaffee bei The Blend mit individueller Milchmischung">
+    <title>The Blend - Bestelle deinen Kaffee</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>The Blend</h1>
+        <button id="lang-toggle" onclick="toggleLanguage()">Switch to English</button>
+    </header>
+
+    <main>
+        <section class="order-section">
+            <h2 data-text-de="Wähle deine Milchmischung" data-text-en="Choose Your Milk Blend">Wähle deine Milchmischung</h2>
+            <div class="slider-container">
+                <label for="milk-slider" data-text-de="Kuhmilch <span id='cow-milk-percentage'>50%</span> | Pflanzenmilch <span id='plant-milk-percentage'>50%</span>" data-text-en="Cow's Milk <span id='cow-milk-percentage'>50%</span> | Plant Milk <span id='plant-milk-percentage'>50%</span>">
+                    Kuhmilch <span id='cow-milk-percentage'>50%</span> | Pflanzenmilch <span id='plant-milk-percentage'>50%</span>
+                </label>
+                <input type="range" id="milk-slider" min="0" max="100" value="50" oninput="updateMilkMix()">
+            </div>
+
+            <div class="milk-graphic">
+                <svg id="cup-image" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="200" height="200">
+                    <path d="M16 48c0 2.2 2.5 4 5.6 4h20.8c3.1 0 5.6-1.8 5.6-4v-6H16v6zm34.4-3.2c0 1.6-1.3 2.8-2.8 2.8H16c-1.5 0-2.8-1.2-2.8-2.8v-7.6h37.6v7.6zM52 8H12c-2.2 0-4 1.8-4 4v8h48V12c0-2.2-1.8-4-4-4zm-4 12H16v2h32v-2z" fill="#4a7c59"/>
+                    <path d="M40 10H24c-1.1 0-2 .9-2 2v8h20v-8c0-1.1-.9-2-2-2z" fill="#c7e1c3"/>
+                </svg>
+            </div>
+
+            <button id="add-to-order" class="button">Zur Bestellung hinzufügen</button>
+            <a href="index.html" class="button">Zurück zur Microsite</a>
+        </section>
+
+        <section id="cart" class="cart-section">
+            <h2 data-text-de="Deine Bestellung" data-text-en="Your Order">Deine Bestellung</h2>
+            <ul id="order-list"></ul>
+            <button id="view-cart" class="button">Bestellung abschließen</button>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 The Blend</p>
+    </footer>
+
+    <script src="app.js"></script>
+    <script>
+        let isGerman = true;
+
+        function toggleLanguage() {
+            isGerman = !isGerman;
+            document.querySelectorAll('[data-text-de]').forEach(elem => {
+                elem.textContent = isGerman ? elem.getAttribute('data-text-de') : elem.getAttribute('data-text-en');
+            });
+            document.getElementById('lang-toggle').textContent = isGerman ? 'Switch to English' : 'Auf Deutsch umschalten';
+        }
+    </script>
+</body>
+</html>
